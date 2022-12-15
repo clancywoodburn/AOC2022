@@ -13,7 +13,7 @@ for i in range(len(f)):
 		goal = (i+1, n)
 		f[i] = f[i].replace("E", "z")
 f = ["#" * len(f[0])] + f + ["#" * len(f[0])]
-print("\n".join(f))
+
 def traverse(pos):
 	vs = [pos]
 	visited[pos] = 0
@@ -27,10 +27,12 @@ def traverse(pos):
 				vs.append(nw)
 	
 traverse(goal)
+print(f"Part 1: {visited[start]}")
+
 best = 1e6
 for x in range(len(f)):
 	for y in range(len(f[0])):
 		if f[x][y] == "a":
 			best = min(visited.get((x,y), 1e6), best)
 
-print(best)
+print(f"Part 2: {best}")
